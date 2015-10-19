@@ -14,6 +14,7 @@
 		E04EBB531BD1C67000517851 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04EBB511BD1C67000517851 /* LaunchScreen.storyboard */; };
 		E04EBB5E1BD1C67000517851 /* SwiftCopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */; };
 		E04EBB691BD1C67100517851 /* SwiftCopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */; };
+		E04EBB781BD1C72500517851 /* SwiftCop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB771BD1C72500517851 /* SwiftCop.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E04EBB641BD1C67100517851 /* SwiftCopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCopUITests.swift; sourceTree = "<group>"; };
 		E04EBB6A1BD1C67100517851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E04EBB771BD1C72500517851 /* SwiftCop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				E04EBB4F1BD1C67000517851 /* Assets.xcassets */,
 				E04EBB511BD1C67000517851 /* LaunchScreen.storyboard */,
 				E04EBB541BD1C67000517851 /* Info.plist */,
+				E04EBB771BD1C72500517851 /* SwiftCop.swift */,
 			);
 			path = SwiftCop;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				E04EBB4B1BD1C67000517851 /* ViewController.swift in Sources */,
 				E04EBB491BD1C67000517851 /* AppDelegate.swift in Sources */,
+				E04EBB781BD1C72500517851 /* SwiftCop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

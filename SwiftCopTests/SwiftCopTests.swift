@@ -10,27 +10,38 @@ import XCTest
 @testable import SwiftCop
 
 class SwiftCopTests: XCTestCase {
-    
+	var nameTextField: UITextField!
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+		self.nameTextField = UITextField()
+		self.nameTextField.text = "Billy Joel"
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    func testCustomTrialNoGuilties() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "More than five characters") {
+			return $0.characters.count >= 5
+		})
+
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two words") {
+			return $0.characters.count >= 5
+		})
+
+		XCTAssert(!swiftCop.anyGuilty())
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+	
+	func testCustomTrialGuilties() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two characters") {
+			return $0.characters.count == 2
+		})
+
+		XCTAssert(swiftCop.anyGuilty())
+	}
 }
