@@ -33,7 +33,7 @@ class SwiftCopTests: XCTestCase {
 			return $0.componentsSeparatedByString(" ").count >= 2
 		})
 
-		XCTAssert(!swiftCop.anyGuilty())
+		XCTAssertFalse(swiftCop.anyGuilty())
     }
 	
 	func testCustomTrialGuilties() {
@@ -42,7 +42,7 @@ class SwiftCopTests: XCTestCase {
 			return $0.characters.count == 2
 		})
 
-		XCTAssert(swiftCop.anyGuilty())
+		XCTAssertTrue(swiftCop.anyGuilty())
 	}
 	
 	func testCustomTrialAllGuilties() {
@@ -56,7 +56,7 @@ class SwiftCopTests: XCTestCase {
 			})
 		
 		let guilties = swiftCop.allGuilties()
-		XCTAssert(guilties.count == 0)
+		XCTAssertTrue(guilties.count == 0)
 	}
 	
 	func testCustomTrialAllGuiltiesOneFail() {
@@ -70,7 +70,7 @@ class SwiftCopTests: XCTestCase {
 			})
 		
 		let guilties = swiftCop.allGuilties()
-		XCTAssert(guilties.count == 1)
+		XCTAssertTrue(guilties.count == 1)
 		XCTAssertEqual(guilties.first!.view, self.nameTextField)
 		XCTAssertEqual(guilties.first!.sentence, "Three words")
 	}
