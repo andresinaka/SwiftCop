@@ -75,16 +75,21 @@ class SwiftCopTests: XCTestCase {
 		XCTAssertEqual(guilties.first!.sentence, "Three words")
 	}
 	
-	func testTrialValidation() {
+	func testTrialValidationPass() {
 		let swiftCop = SwiftCop()
 		self.nameTextField.text = "email@email.com"
 		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Invalid Email" , trial: Trial.Email))
 
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 0)
-		
+	}
+	
+	func testTrialValidationGuilty() {
+		let swiftCop = SwiftCop()
 		self.nameTextField.text = "email@email"
 		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Invalid Email" , trial: Trial.Email))
+		
+		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)
 	}
 }
