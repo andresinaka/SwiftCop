@@ -98,4 +98,11 @@ class TrialSwiftCopTests: XCTestCase {
 		XCTAssertFalse(trial(evidence: "1"))
 	}
 	
+	func testInvalid() {
+		let interval = Trial.Length(.In, 5)
+		let trial = interval.trial()
+		
+		XCTAssertFalse(trial(evidence: "123456"))
+	}
+	
 }

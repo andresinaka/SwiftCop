@@ -122,19 +122,13 @@ public class SwiftCop {
 	
 	public func anyGuilty() -> Bool {
 		return suspects.filter{
-			if let text = $0.view.text {
-				return !$0.trial(evidence: text)
-			}
-			return true
+			return !$0.trial(evidence: $0.view.text!)
 		}.count != 0
 	}
 	
 	public func allGuilties() -> Array<Suspect> {
 		return suspects.filter{
-			if let text = $0.view.text {
-				return !$0.trial(evidence: text)
-			}
-			return false
+			return !$0.trial(evidence: $0.view.text!)
 		}
 	}
 }

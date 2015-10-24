@@ -92,4 +92,13 @@ class SwiftCopTests: XCTestCase {
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)
 	}
+	
+	func testNoTextTextField() {
+		let swiftCop = SwiftCop()
+		self.nameTextField.text = nil
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Invalid Email" , trial: Trial.Email))
+		
+		let guilties = swiftCop.allGuilties()
+		XCTAssertTrue(guilties.count == 1)
+	}
 }
