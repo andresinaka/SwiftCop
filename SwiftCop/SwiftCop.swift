@@ -10,11 +10,19 @@ import Foundation
 import UIKit
 
 
+public enum Lenght {
+	case Is
+	case Maximum
+	case Minimum
+}
+
+
 public enum Trial {
 	case Exclusion([String])
 	case Format(String)
 	case Inclusion([String])
 	case Email
+	case Length(Lenght,Int)
 	
 	public func trial() -> ((evidence: String) -> Bool){
 		switch self {
@@ -51,6 +59,21 @@ public enum Trial {
 				let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 				let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
 				return emailTest.evaluateWithObject(evidence)
+			}
+		
+		case .Length(Lenght.Is, let exact):
+			return { (evidence: String) -> Bool in
+				return evidence.characters.count == exact
+			}
+			
+		case .Length(Lenght.Minimum, let minimum):
+			return { (evidence: String) -> Bool in
+				return evidence.characters.count >= minimum
+			}
+			
+		case .Length(Lenght.Maximum , let maximum):
+			return { (evidence: String) -> Bool in
+				return evidence.characters.count <= maximum
 			}
 		}
 	}

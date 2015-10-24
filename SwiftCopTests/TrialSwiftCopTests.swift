@@ -46,11 +46,36 @@ class TrialSwiftCopTests: XCTestCase {
 	func testEmail() {
 		let emailTrial = Trial.Email
 		let trial = emailTrial.trial()
-
+		
 		XCTAssertTrue(trial(evidence: "test@test.com"))
 		XCTAssertFalse(trial(evidence: "test@test"))
 		XCTAssertFalse(trial(evidence: "test@"))
 		XCTAssertFalse(trial(evidence: "test.com"))
 		XCTAssertFalse(trial(evidence: ".com"))
 	}
+	
+	func testLengthIs() {
+		let lengthTrial = Trial.Length(.Is, 10)
+		let trial = lengthTrial.trial()
+		
+		XCTAssertTrue(trial(evidence: "0123456789"))
+		XCTAssertFalse(trial(evidence: "56789"))
+	}
+	
+	func testLengthMinimum() {
+		let lengthTrial = Trial.Length(.Minimum, 10)
+		let trial = lengthTrial.trial()
+		
+		XCTAssertTrue(trial(evidence: "0123456789"))
+		XCTAssertFalse(trial(evidence: "56789"))
+	}
+	
+	func testLengthMaximum() {
+		let lengthTrial = Trial.Length(.Maximum, 10)
+		let trial = lengthTrial.trial()
+		
+		XCTAssertTrue(trial(evidence: "0123456789"))
+		XCTAssertFalse(trial(evidence: "01234567890"))
+	}
+	
 }
