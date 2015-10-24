@@ -15,6 +15,7 @@
 		E04EBB5E1BD1C67000517851 /* SwiftCopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */; };
 		E04EBB691BD1C67100517851 /* SwiftCopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */; };
 		E04EBB781BD1C72500517851 /* SwiftCop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB771BD1C72500517851 /* SwiftCop.swift */; settings = {ASSET_TAGS = (); }; };
+		E05551551BD8526C0012CD93 /* TrialSwiftCopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05551541BD8526C0012CD93 /* TrialSwiftCopTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCopUITests.swift; sourceTree = "<group>"; };
 		E04EBB6A1BD1C67100517851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E04EBB771BD1C72500517851 /* SwiftCop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCop.swift; sourceTree = "<group>"; };
+		E05551541BD8526C0012CD93 /* TrialSwiftCopTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialSwiftCopTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		E04EBB5C1BD1C67000517851 /* SwiftCopTests */ = {
 			isa = PBXGroup;
 			children = (
+				E05551541BD8526C0012CD93 /* TrialSwiftCopTests.swift */,
 				E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */,
 				E04EBB5F1BD1C67100517851 /* Info.plist */,
 			);
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04EBB5E1BD1C67000517851 /* SwiftCopTests.swift in Sources */,
+				E05551551BD8526C0012CD93 /* TrialSwiftCopTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +489,7 @@
 				E04EBB6F1BD1C67100517851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E04EBB701BD1C67100517851 /* Build configuration list for PBXNativeTarget "SwiftCopTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +498,7 @@
 				E04EBB721BD1C67100517851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E04EBB731BD1C67100517851 /* Build configuration list for PBXNativeTarget "SwiftCopUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +507,7 @@
 				E04EBB751BD1C67100517851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

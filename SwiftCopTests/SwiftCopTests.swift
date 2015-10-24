@@ -30,7 +30,7 @@ class SwiftCopTests: XCTestCase {
 		})
 
 		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two words") {
-			return $0.characters.count >= 5
+			return $0.componentsSeparatedByString(" ").count >= 2
 		})
 
 		XCTAssert(!swiftCop.anyGuilty())
@@ -43,5 +43,35 @@ class SwiftCopTests: XCTestCase {
 		})
 
 		XCTAssert(swiftCop.anyGuilty())
+	}
+	
+	func testCustomTrialAllGuilties() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "More than five characters") {
+			return $0.characters.count >= 5
+			})
+		
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two words") {
+			return $0.componentsSeparatedByString(" ").count >= 2
+			})
+		
+		let guilties = swiftCop.allGuilties()
+		XCTAssert(guilties.count == 0)
+	}
+	
+	func testCustomTrialAllGuiltiesOneFail() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "More than five characters") {
+			return $0.characters.count >= 5
+			})
+		
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Three words") {
+			return $0.componentsSeparatedByString(" ").count >= 3
+			})
+		
+		let guilties = swiftCop.allGuilties()
+		XCTAssert(guilties.count == 1)
+		XCTAssertEqual(guilties.first!.view, self.nameTextField)
+		XCTAssertEqual(guilties.first!.sentence, "Three words")
 	}
 }

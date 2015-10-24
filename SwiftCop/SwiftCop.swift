@@ -9,6 +9,53 @@
 import Foundation
 import UIKit
 
+
+public enum Trial {
+	case Exclusion([String])
+	case Format(String)
+	case Inclusion([String])
+	case Email
+	
+	public func trial() -> ((evidence: String) -> Bool){
+		switch self {
+		case let .Exclusion(exclusionElements):
+			return { (evidence: String) -> Bool in
+				
+				for exclusionElement in exclusionElements {
+					if ((evidence.rangeOfString(exclusionElement)) != nil) {
+						return false
+					}
+				}
+				return true
+			}
+			
+		case let .Format(regex):
+			return { (evidence: String) -> Bool in
+				let regexTest = NSPredicate(format:"SELF MATCHES %@", regex)
+				return regexTest.evaluateWithObject(evidence)
+			}
+			
+		case let .Inclusion(inclusionElements):
+			return { (evidence: String) -> Bool in
+				
+				for inclusionElement in inclusionElements {
+					if ((evidence.rangeOfString(inclusionElement)) != nil) {
+						return true
+					}
+				}
+				return false
+			}
+			
+		case .Email:
+			return { (evidence: String) -> Bool in
+				let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+				let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+				return emailTest.evaluateWithObject(evidence)
+			}
+		}
+	}
+}
+
 public struct Suspect {
 	var view: UITextField
 	var trial: (evidence: String) -> Bool
@@ -17,6 +64,12 @@ public struct Suspect {
 	public init(view: UITextField, sentence: String, trial: (evidence: String) -> Bool) {
 		self.view = view
 		self.trial = trial
+		self.sentence = sentence
+	}
+	
+	public init(view: UITextField, sentence: String, trial: Trial) {
+		self.view = view
+		self.trial = trial.trial()
 		self.sentence = sentence
 	}
 }
