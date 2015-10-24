@@ -14,6 +14,7 @@ public enum Lenght {
 	case Is
 	case Maximum
 	case Minimum
+	case In
 }
 
 
@@ -22,7 +23,7 @@ public enum Trial {
 	case Format(String)
 	case Inclusion([String])
 	case Email
-	case Length(Lenght,Int)
+	case Length(Lenght,Any)
 	
 	public func trial() -> ((evidence: String) -> Bool){
 		switch self {
@@ -61,19 +62,34 @@ public enum Trial {
 				return emailTest.evaluateWithObject(evidence)
 			}
 		
-		case .Length(Lenght.Is, let exact):
+		case .Length(Lenght.Is, let exact as Int):
 			return { (evidence: String) -> Bool in
 				return evidence.characters.count == exact
 			}
 			
-		case .Length(Lenght.Minimum, let minimum):
+		case .Length(Lenght.Minimum, let minimum as Int):
 			return { (evidence: String) -> Bool in
 				return evidence.characters.count >= minimum
 			}
 			
-		case .Length(Lenght.Maximum , let maximum):
+		case .Length(Lenght.Maximum , let maximum as Int):
 			return { (evidence: String) -> Bool in
 				return evidence.characters.count <= maximum
+			}
+			
+		case .Length(Lenght.In , let interval as HalfOpenInterval<Int>):
+			return { (evidence: String) -> Bool in
+				return interval.contains(evidence.characters.count)
+			}
+			
+		case .Length(Lenght.In , let interval as ClosedInterval<Int>):
+			return { (evidence: String) -> Bool in
+				return interval.contains(evidence.characters.count)
+			}
+
+		default:
+			return { (evidence: String) -> Bool in
+				return false
 			}
 		}
 	}

@@ -78,4 +78,24 @@ class TrialSwiftCopTests: XCTestCase {
 		XCTAssertFalse(trial(evidence: "01234567890"))
 	}
 	
+	func testLengthIntervalsHalfOpen() {
+		let interval = Trial.Length(.In, 2..<5 as HalfOpenInterval)
+		let trial = interval.trial()
+		
+		XCTAssertTrue(trial(evidence: "1234"))
+		XCTAssertFalse(trial(evidence: "12345"))
+		XCTAssertFalse(trial(evidence: "1"))
+	}
+
+	func testLengthIntervalsClosed() {
+		let interval = Trial.Length(.In, 2...5 as ClosedInterval)
+		let trial = interval.trial()
+
+		XCTAssertFalse(trial(evidence: "123456"))
+		XCTAssertTrue(trial(evidence: "12345"))
+		XCTAssertTrue(trial(evidence: "1234"))
+		XCTAssertTrue(trial(evidence: "12"))
+		XCTAssertFalse(trial(evidence: "1"))
+	}
+	
 }
