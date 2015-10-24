@@ -131,4 +131,13 @@ public class SwiftCop {
 			return !$0.trial(evidence: $0.view.text!)
 		}
 	}
+	
+	public func isGuilty(textView: UITextField) -> Suspect? {
+		for suspect in suspects where suspect.view == textView {
+			if !suspect.trial(evidence: suspect.view.text!) {
+				return suspect
+			}
+		}
+		return nil
+	}
 }
