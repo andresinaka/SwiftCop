@@ -41,7 +41,7 @@ class ViewController: UIViewController {
 			message = "Someone is guilty!"
 		}
 		
-		let alertController = UIAlertController(title: "👮", message: message, preferredStyle: .Alert)
+		let alertController = UIAlertController(title: "", message: message, preferredStyle: .Alert)
 		alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
 
 		self.presentViewController(alertController, animated: true, completion: nil)
