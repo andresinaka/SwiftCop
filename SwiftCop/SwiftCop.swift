@@ -96,9 +96,9 @@ public enum Trial {
 }
 
 public struct Suspect {
-	var view: UITextField
-	var trial: (evidence: String) -> Bool
-	var sentence: String
+	private(set) public var view: UITextField
+	private(set) public var trial: (evidence: String) -> Bool
+	private(set) public var sentence: String
 	
 	public init(view: UITextField, sentence: String, trial: (evidence: String) -> Bool) {
 		self.view = view
@@ -111,6 +111,10 @@ public struct Suspect {
 		self.trial = trial.trial()
 		self.sentence = sentence
 	}
+	
+	public func isGuilty() -> Bool {
+		return !self.trial(evidence: self.view.text!)
+	}
 }
 
 public class SwiftCop {
@@ -122,19 +126,19 @@ public class SwiftCop {
 	
 	public func anyGuilty() -> Bool {
 		return suspects.filter{
-			return !$0.trial(evidence: $0.view.text!)
+			return $0.isGuilty()
 		}.count != 0
 	}
 	
 	public func allGuilties() -> Array<Suspect> {
 		return suspects.filter{
-			return !$0.trial(evidence: $0.view.text!)
+			return $0.isGuilty()
 		}
 	}
 	
 	public func isGuilty(textView: UITextField) -> Suspect? {
 		for suspect in suspects where suspect.view == textView {
-			if !suspect.trial(evidence: suspect.view.text!) {
+			if suspect.isGuilty() {
 				return suspect
 			}
 		}
