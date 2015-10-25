@@ -53,6 +53,14 @@
                                 <color key="textColor" red="0.8980392157" green="0.20000000000000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ot8-kJ-N7U">
+                                <rect key="frame" x="266" y="285" width="68" height="30"/>
+                                <animations/>
+                                <state key="normal" title="VALIDATE"/>
+                                <connections>
+                                    <action selector="allValid:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uuP-zk-goo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -60,6 +68,7 @@
                             <constraint firstAttribute="trailing" secondItem="lRi-1x-zpa" secondAttribute="trailing" constant="44" id="4vk-4A-FXP"/>
                             <constraint firstItem="lRi-1x-zpa" firstAttribute="top" secondItem="O7Z-dl-dlf" secondAttribute="bottom" constant="32" id="4yt-CF-RfH"/>
                             <constraint firstItem="3O6-RG-wDR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="44" id="5u8-yS-cEI"/>
+                            <constraint firstItem="Ot8-kJ-N7U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9li-kR-k1R"/>
                             <constraint firstAttribute="trailing" secondItem="3O6-RG-wDR" secondAttribute="trailing" constant="44" id="BcG-Bu-UKR"/>
                             <constraint firstItem="Qqm-L4-Ekl" firstAttribute="top" secondItem="lRi-1x-zpa" secondAttribute="bottom" constant="32" id="PZL-js-i1n"/>
                             <constraint firstItem="3O6-RG-wDR" firstAttribute="top" secondItem="Qqm-L4-Ekl" secondAttribute="bottom" constant="32" id="Ps4-in-lar"/>
@@ -69,6 +78,7 @@
                             <constraint firstAttribute="trailing" secondItem="Qqm-L4-Ekl" secondAttribute="trailing" constant="44" id="gxn-t0-OLs"/>
                             <constraint firstItem="lRi-1x-zpa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="44" id="oP1-2Z-2sT"/>
                             <constraint firstItem="O7Z-dl-dlf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="ttN-Za-M78"/>
+                            <constraint firstItem="Ot8-kJ-N7U" firstAttribute="top" secondItem="3O6-RG-wDR" secondAttribute="bottom" constant="14" id="yOW-de-yCe"/>
                         </constraints>
                     </view>
                     <connections>

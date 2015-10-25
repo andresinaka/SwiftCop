@@ -97,8 +97,8 @@ public enum Trial {
 
 public struct Suspect {
 	private(set) public var view: UITextField
-	private(set) public var trial: (evidence: String) -> Bool
-	private(set) public var sentence: String
+	var trial: (evidence: String) -> Bool
+	var sentence: String
 	
 	public init(view: UITextField, sentence: String, trial: (evidence: String) -> Bool) {
 		self.view = view

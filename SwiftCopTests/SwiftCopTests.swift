@@ -30,7 +30,7 @@ class SwiftCopTests: XCTestCase {
 		})
 
 		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two words") {
-			return $0.componentsSeparatedByString(" ").count >= 2
+			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
 		})
 
 		XCTAssertFalse(swiftCop.anyGuilty())
@@ -52,7 +52,7 @@ class SwiftCopTests: XCTestCase {
 		})
 		
 		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two words") {
-			return $0.componentsSeparatedByString(" ").count >= 2
+			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
 		})
 		
 		let guilties = swiftCop.allGuilties()
