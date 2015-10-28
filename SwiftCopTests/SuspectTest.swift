@@ -27,9 +27,9 @@ class SuspectTest: XCTestCase {
 			return true
 		}
 	
-		let suspect = Suspect(view: self.dummyTextField, sentence: "More than five characters", trial: trial)
+		let suspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: trial)
 		
-		XCTAssertEqual(suspect.sentence, "More than five characters")
+		XCTAssertEqual(suspect.sentence, "True Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertFalse(suspect.isGuilty())
     }
@@ -41,9 +41,9 @@ class SuspectTest: XCTestCase {
 			return false
 		}
 		
-		let suspect = Suspect(view: self.dummyTextField, sentence: "More than five characters", trial: trial)
+		let suspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: trial)
 		
-		XCTAssertEqual(suspect.sentence, "More than five characters")
+		XCTAssertEqual(suspect.sentence, "False Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertTrue(suspect.isGuilty())
 	}
@@ -51,18 +51,18 @@ class SuspectTest: XCTestCase {
 	
 	func testCreateSuspectWithTrialTrue(){
 
-		let suspect = Suspect(view: self.dummyTextField, sentence: "More than five characters", trial: Trial.True)
+		let suspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.True)
 		
-		XCTAssertEqual(suspect.sentence, "More than five characters")
+		XCTAssertEqual(suspect.sentence, "True Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertFalse(suspect.isGuilty())
 	}
 	
 	func testCreateSuspectWithTrialFalse(){
 		
-		let suspect = Suspect(view: self.dummyTextField, sentence: "More than five characters", trial: Trial.False)
+		let suspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: Trial.False)
 		
-		XCTAssertEqual(suspect.sentence, "More than five characters")
+		XCTAssertEqual(suspect.sentence, "False Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertTrue(suspect.isGuilty())
 	}

@@ -16,114 +16,120 @@ class SwiftCopTests: XCTestCase {
         super.setUp()
 
 		self.nameTextField = UITextField()
-		self.nameTextField.text = "Billy Joel"
+		self.nameTextField.text = "Not Used"
     }
 
     override func tearDown() {
         super.tearDown()
     }
-
-    func testCustomTrialNoGuilties() {
+	
+	func testAddSuspect() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "More than five characters") {
-			return $0.characters.count >= 5
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "True Trial", trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "False Trial", trial: Trial.True))
+		XCTAssertTrue(swiftCop.suspects.count == 2)
+	}
+	
+	func testAnyGuiltyFalse() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "True Trial", trial: Trial.True))
+		XCTAssertFalse(swiftCop.anyGuilty())
+	}
+	
+	func testAnyGuiltyTrue() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "False Trial", trial: Trial.False))
+		XCTAssertTrue(swiftCop.anyGuilty())
+	}
+	
+	func testIsGuiltyTrue() {
+		let swiftCop = SwiftCop()
+
+		let textFieldNotGuilty = UITextField()
+		textFieldNotGuilty.text = "Not guilty"
+
+		let textFieldGuilty = UITextField()
+		textFieldGuilty.text = "Guilty"
+
+		swiftCop.addSuspect(Suspect(view: textFieldNotGuilty, sentence: "True Trial" , trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: textFieldGuilty, sentence: "True Trial" , trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: textFieldGuilty, sentence: "False Trial" , trial: Trial.False))
+
+		let guilties = swiftCop.allGuilties()
+		XCTAssertTrue(guilties.count == 1)
+
+		XCTAssertNil(swiftCop.isGuilty(textFieldNotGuilty))
+		XCTAssertNotNil(swiftCop.isGuilty(textFieldGuilty))
+
+		let expectation = expectationWithDescription("isGuilty returns true")
+		
+		if let suspect = swiftCop.isGuilty(textFieldGuilty) {
+			XCTAssertEqual(suspect.view, textFieldGuilty)
+			XCTAssertEqual(suspect.sentence, "False Trial")
+			expectation.fulfill()
+		}
+		
+		waitForExpectationsWithTimeout(1) { error in
+			
+		}
+	}
+	
+    func testCustomTrialNoTGuilty() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty") {
+			(evidence: String) -> Bool in
+			return true
 		})
 
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two words") {
-			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty") {
+			(evidence: String) -> Bool in
+			return true
 		})
 
 		XCTAssertFalse(swiftCop.anyGuilty())
     }
 	
-	func testCustomTrialGuilties() {
+	func testCustomTrialGuilty() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two characters") {
-			return $0.characters.count == 2
-		})
-
-		XCTAssertTrue(swiftCop.anyGuilty())
-	}
-	
-	func testCustomTrialAllGuilties() {
-		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "More than five characters") {
-			return $0.characters.count >= 5
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Guilty") {
+			(evidence: String) -> Bool in
+			return false
 		})
 		
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Two words") {
-			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty") {
+			(evidence: String) -> Bool in
+			return true
 		})
+		
+		XCTAssertTrue(swiftCop.anyGuilty())
+	}
+
+	func testCustomTrialAllGuiltiesFalse() {
+		let swiftCop = SwiftCop()
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.True))
 		
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 0)
 	}
-	
-	func testCustomTrialAllGuiltiesOneFail() {
+
+	func testCustomTrialAllGuiltiesTrue() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "More than five characters") {
-			return $0.characters.count >= 5
-		})
-		
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Three words") {
-			return $0.componentsSeparatedByString(" ").count >= 3
-		})
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Guilty", trial: Trial.False))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.True))
 		
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)
 		XCTAssertEqual(guilties.first!.view, self.nameTextField)
-		XCTAssertEqual(guilties.first!.sentence, "Three words")
+		XCTAssertEqual(guilties.first!.sentence, "Guilty")
 	}
-	
-	func testTrialValidationPass() {
-		let swiftCop = SwiftCop()
-		self.nameTextField.text = "email@email.com"
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Invalid Email" , trial: Trial.Email))
 
-		let guilties = swiftCop.allGuilties()
-		XCTAssertTrue(guilties.count == 0)
-	}
-	
-	func testTrialValidationGuilty() {
-		let swiftCop = SwiftCop()
-		self.nameTextField.text = "email@email"
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Invalid Email" , trial: Trial.Email))
-		
-		let guilties = swiftCop.allGuilties()
-		XCTAssertTrue(guilties.count == 1)
-	}
-	
 	func testNoTextTextField() {
 		let swiftCop = SwiftCop()
 		self.nameTextField.text = nil
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Invalid Email" , trial: Trial.Email))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Guilty" , trial: Trial.False))
 		
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)
 	}
-	
-	func testIsGuilty() {
-		let swiftCop = SwiftCop()
-		let textField1 = UITextField()
-		textField1.text = "test@test.com"
-		
-		let textField2 = UITextField()
-		textField2.text = "wrong"
-
-		swiftCop.addSuspect(Suspect(view: textField1, sentence: "Invalid Email" , trial: Trial.Email))
-		swiftCop.addSuspect(Suspect(view: textField2, sentence: "Invalid Email" , trial: Trial.Email))
-		swiftCop.addSuspect(Suspect(view: textField2, sentence: "Not Long Enought" , trial: Trial.Length(.Minimum, 2)))
-
-		let guilties = swiftCop.allGuilties()
-		XCTAssertTrue(guilties.count == 1)
-		
-		XCTAssertNil(swiftCop.isGuilty(textField1))
-		XCTAssertNotNil(swiftCop.isGuilty(textField2))
-		
-		if let suspect = swiftCop.isGuilty(textField2) {
-			XCTAssertEqual(suspect.view, textField2)
-			XCTAssertEqual(suspect.sentence, "Invalid Email")
-		}
-	}
-	
 }
