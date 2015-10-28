@@ -108,7 +108,7 @@ class SwiftCopTests: XCTestCase {
 		textField1.text = "test@test.com"
 		
 		let textField2 = UITextField()
-		textField2.text = "sarasa"
+		textField2.text = "wrong"
 
 		swiftCop.addSuspect(Suspect(view: textField1, sentence: "Invalid Email" , trial: Trial.Email))
 		swiftCop.addSuspect(Suspect(view: textField2, sentence: "Invalid Email" , trial: Trial.Email))

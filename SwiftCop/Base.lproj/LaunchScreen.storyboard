@@ -20,8 +20,8 @@
                                 <rect key="frame" x="240" y="240" width="120" height="120"/>
                                 <animations/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ElPolicia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pc-XV-F2f">
-                                <rect key="frame" x="211" y="136" width="178" height="54"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SwiftCop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pc-XV-F2f">
+                                <rect key="frame" x="202" y="136" width="197" height="54"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                                 <color key="textColor" red="0.87058823529411766" green="0.64313725490196072" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

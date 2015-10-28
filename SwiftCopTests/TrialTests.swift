@@ -9,7 +9,7 @@
 import XCTest
 @testable import SwiftCop
 
-class TrialSwiftCopTests: XCTestCase {
+class TrialTests: XCTestCase {
         
     override func setUp() {
         super.setUp()

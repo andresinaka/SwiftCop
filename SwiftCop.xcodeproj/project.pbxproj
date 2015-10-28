@@ -15,7 +15,10 @@
 		E04EBB5E1BD1C67000517851 /* SwiftCopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */; };
 		E04EBB691BD1C67100517851 /* SwiftCopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */; };
 		E04EBB781BD1C72500517851 /* SwiftCop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB771BD1C72500517851 /* SwiftCop.swift */; settings = {ASSET_TAGS = (); }; };
-		E05551551BD8526C0012CD93 /* TrialSwiftCopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05551541BD8526C0012CD93 /* TrialSwiftCopTests.swift */; settings = {ASSET_TAGS = (); }; };
+		E05551551BD8526C0012CD93 /* TrialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05551541BD8526C0012CD93 /* TrialTests.swift */; settings = {ASSET_TAGS = (); }; };
+		E07E95C41BE03DE3000CA328 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C31BE03DE3000CA328 /* Trial.swift */; settings = {ASSET_TAGS = (); }; };
+		E07E95C61BE03E1F000CA328 /* Suspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C51BE03E1F000CA328 /* Suspect.swift */; settings = {ASSET_TAGS = (); }; };
+		E07E95C81BE03E6A000CA328 /* SuspectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C71BE03E6A000CA328 /* SuspectTest.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +53,10 @@
 		E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCopUITests.swift; sourceTree = "<group>"; };
 		E04EBB6A1BD1C67100517851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E04EBB771BD1C72500517851 /* SwiftCop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCop.swift; sourceTree = "<group>"; };
-		E05551541BD8526C0012CD93 /* TrialSwiftCopTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialSwiftCopTests.swift; sourceTree = "<group>"; };
+		E05551541BD8526C0012CD93 /* TrialTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialTests.swift; sourceTree = "<group>"; };
+		E07E95C31BE03DE3000CA328 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
+		E07E95C51BE03E1F000CA328 /* Suspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suspect.swift; sourceTree = "<group>"; };
+		E07E95C71BE03E6A000CA328 /* SuspectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspectTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,8 @@
 				E04EBB511BD1C67000517851 /* LaunchScreen.storyboard */,
 				E04EBB541BD1C67000517851 /* Info.plist */,
 				E04EBB771BD1C72500517851 /* SwiftCop.swift */,
+				E07E95C31BE03DE3000CA328 /* Trial.swift */,
+				E07E95C51BE03E1F000CA328 /* Suspect.swift */,
 			);
 			path = SwiftCop;
 			sourceTree = "<group>";
@@ -115,8 +123,9 @@
 		E04EBB5C1BD1C67000517851 /* SwiftCopTests */ = {
 			isa = PBXGroup;
 			children = (
-				E05551541BD8526C0012CD93 /* TrialSwiftCopTests.swift */,
+				E05551541BD8526C0012CD93 /* TrialTests.swift */,
 				E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */,
+				E07E95C71BE03E6A000CA328 /* SuspectTest.swift */,
 				E04EBB5F1BD1C67100517851 /* Info.plist */,
 			);
 			path = SwiftCopTests;
@@ -263,7 +272,9 @@
 			files = (
 				E04EBB4B1BD1C67000517851 /* ViewController.swift in Sources */,
 				E04EBB491BD1C67000517851 /* AppDelegate.swift in Sources */,
+				E07E95C41BE03DE3000CA328 /* Trial.swift in Sources */,
 				E04EBB781BD1C72500517851 /* SwiftCop.swift in Sources */,
+				E07E95C61BE03E1F000CA328 /* Suspect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04EBB5E1BD1C67000517851 /* SwiftCopTests.swift in Sources */,
-				E05551551BD8526C0012CD93 /* TrialSwiftCopTests.swift in Sources */,
+				E05551551BD8526C0012CD93 /* TrialTests.swift in Sources */,
+				E07E95C81BE03E6A000CA328 /* SuspectTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
