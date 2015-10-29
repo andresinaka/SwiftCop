@@ -15,20 +15,20 @@ class ViewController: UIViewController {
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var password: UITextField!
 	
-	let elPolicia = SwiftCop()
+	let swiftCop = SwiftCop()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		elPolicia.addSuspect(Suspect(view: self.fullName, sentence: "More Than Two Words Needed"){
+		swiftCop.addSuspect(Suspect(view: self.fullName, sentence: "More Than Two Words Needed"){
 			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
 		})
-		elPolicia.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.Email))
-		elPolicia.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters ", trial: Trial.Length(.Minimum, 4)))
+		swiftCop.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.Email))
+		swiftCop.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters ", trial: Trial.Length(.Minimum, 4)))
 	}
 	
 	@IBAction func validate(sender: UITextField) {
-		if let suspect = elPolicia.isGuilty(sender) {
+		if let suspect = swiftCop.isGuilty(sender) {
 			self.validationLabel.text = suspect.sentence
 		} else {
 			self.validationLabel.text = ""
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
 
 	@IBAction func allValid(sender: AnyObject) {
 		var message = "Everything fine!"
-		if(elPolicia.anyGuilty()){
+		if(swiftCop.anyGuilty()){
 			message = "Someone is guilty!"
 		}
 		
