@@ -19,7 +19,7 @@ public struct Suspect {
 		self.sentence = sentence
 	}
 	
-	public init(view: UITextField, sentence: String, trial: Trial) {
+	public init(view: UITextField, sentence: String, trial: TrialProtocol) {
 		self.view = view
 		self.trial = trial.trial()
 		self.sentence = sentence

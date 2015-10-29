@@ -8,6 +8,11 @@
 
 import UIKit
 
+public protocol TrialProtocol {
+	func trial() -> ((evidence: String) -> Bool)
+}
+
+
 public enum Lenght {
 	case Is
 	case Maximum
@@ -15,7 +20,7 @@ public enum Lenght {
 	case In
 }
 
-public enum Trial {
+public enum Trial: TrialProtocol {
 	case Exclusion([String])
 	case Format(String)
 	case Inclusion([String])

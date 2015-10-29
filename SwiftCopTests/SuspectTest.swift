@@ -50,6 +50,8 @@ class SuspectTest: XCTestCase {
 
 	
 	func testCreateSuspectWithTrialTrue(){
+		
+
 
 		let suspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.True)
 		
