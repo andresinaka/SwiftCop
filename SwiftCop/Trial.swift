@@ -12,7 +12,6 @@ public protocol TrialProtocol {
 	func trial() -> ((evidence: String) -> Bool)
 }
 
-
 public enum Lenght {
 	case Is
 	case Maximum

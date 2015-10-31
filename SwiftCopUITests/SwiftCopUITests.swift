@@ -12,25 +12,71 @@ class SwiftCopUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testFullName() {
+		let fullNameTextField = XCUIApplication().textFields["Full Name"]
+		fullNameTextField.tap()
+		fullNameTextField.typeText("first")
+		XCTAssert(XCUIApplication().staticTexts["More Than Two Words Needed"].exists)
+		fullNameTextField.typeText(" last")
+		XCTAssertFalse(XCUIApplication().staticTexts["More Than Two Words Needed"].exists)
     }
-    
+	
+	func testEmail() {
+		let emailTextField = XCUIApplication().textFields["Email"]
+		emailTextField.tap()
+		emailTextField.typeText("email")
+		XCTAssert(XCUIApplication().staticTexts["Invalid email"].exists)
+		emailTextField.typeText("@email.com")
+		XCTAssertFalse(XCUIApplication().staticTexts["Invalid Email"].exists)
+	}
+
+	func testPassword() {
+		let passwordTextField = XCUIApplication().textFields["Password"]
+		passwordTextField.tap()
+		passwordTextField.typeText("1")
+		XCTAssert(XCUIApplication().staticTexts["Minimum 4 Characters"].exists)
+		passwordTextField.typeText("234")
+		XCTAssertFalse(XCUIApplication().staticTexts["Minimum 4 Characters"].exists)
+	}
+	
+	func testAllValidationsPass(){
+		
+		let app = XCUIApplication()
+		let fullNameTextField = app.textFields["Full Name"]
+		fullNameTextField.tap()
+		fullNameTextField.typeText("fist name")
+		
+		let emailTextField = app.textFields["Email"]
+		emailTextField.tap()
+		emailTextField.typeText("email@email.com")
+		
+		let passwordTextField = app.textFields["Password"]
+		passwordTextField.tap()
+		passwordTextField.typeText("password")
+		app.buttons["Check Validations"].tap()
+		
+		let policemanElement = XCUIApplication().otherElements.containingType(.Image, identifier:"policeman").element
+		policemanElement.tap()
+		
+		let checkValidationsButton = XCUIApplication().buttons["Check Validations"]
+		checkValidationsButton.tap()
+
+		XCTAssert(XCUIApplication().staticTexts["Everything fine!"].exists)
+	}
+	
+	func testAllValidationsFail(){
+		let checkValidationsButton = XCUIApplication().buttons["Check Validations"]
+		checkValidationsButton.tap()
+		
+		XCTAssertFalse(XCUIApplication().staticTexts["Everything fine!"].exists)
+	}
+
 }

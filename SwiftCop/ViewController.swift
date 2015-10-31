@@ -28,7 +28,7 @@ class ViewController: UIViewController {
 			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
 		})
 		swiftCop.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.Email))
-		swiftCop.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters ", trial: Trial.Length(.Minimum, 4)))
+		swiftCop.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters", trial: Trial.Length(.Minimum, 4)))
 	}
 
 	@IBAction func validateFullName(sender: UITextField) {
@@ -44,10 +44,14 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func allValid(sender: UITextField) {
-		let message = "Everything fine!"
-		let guilties = swiftCop.allGuilties().map{ return $0.sentence}.joinWithSeparator("\n")
+		let nonGultiesMessage = "Everything fine!"
+		let allGuiltiesMessage = swiftCop.allGuilties().map{ return $0.sentence}.joinWithSeparator("\n")
 		
-		self.validationLabel.text = guilties.characters.count > 0 ? guilties : message
+		self.validationLabel.text = allGuiltiesMessage.characters.count > 0 ? allGuiltiesMessage : nonGultiesMessage
+	}
+	
+	@IBAction func hideKeyboard(sender: AnyObject) {
+		self.view.endEditing(true)
 	}
 }
 

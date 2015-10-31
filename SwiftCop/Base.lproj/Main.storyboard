@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -157,6 +157,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="sMj-Ql-xLO" secondAttribute="trailing" constant="24" id="vhL-DK-A2E"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SnI-g3-NYF" secondAttribute="trailing" constant="24" id="zWM-e4-JaV"/>
                         </constraints>
+                        <connections>
+                            <action selector="hideKeyboard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5fd-oA-uno"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailMessage" destination="BAP-CA-Nt4" id="A2U-o3-Q8N"/>
