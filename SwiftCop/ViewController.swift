@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 	@IBOutlet weak var validationLabel: UILabel!
+	
+	@IBOutlet weak var fullNameMessage: UILabel!
+	@IBOutlet weak var emailMessage: UILabel!
+	@IBOutlet weak var passwordMessage: UILabel!
 
 	@IBOutlet weak var fullName: UITextField!
 	@IBOutlet weak var emailTextField: UITextField!
@@ -26,25 +30,24 @@ class ViewController: UIViewController {
 		swiftCop.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.Email))
 		swiftCop.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters ", trial: Trial.Length(.Minimum, 4)))
 	}
-	
-	@IBAction func validate(sender: UITextField) {
-		if let suspect = swiftCop.isGuilty(sender) {
-			self.validationLabel.text = suspect.sentence
-		} else {
-			self.validationLabel.text = ""
-		}
+
+	@IBAction func validateFullName(sender: UITextField) {
+		self.fullNameMessage.text = swiftCop.isGuilty(sender)?.verdict()
 	}
 
-	@IBAction func allValid(sender: AnyObject) {
-		var message = "Everything fine!"
-		if(swiftCop.anyGuilty()){
-			message = "Someone is guilty!"
-		}
-		
-		let alertController = UIAlertController(title: "", message: message, preferredStyle: .Alert)
-		alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+	@IBAction func validateEmail(sender: UITextField) {
+		self.emailMessage.text = swiftCop.isGuilty(sender)?.verdict()
+	}
+	
+	@IBAction func validatePassword(sender: UITextField) {
+		self.passwordMessage.text = swiftCop.isGuilty(sender)?.verdict()
+	}
 
-		self.presentViewController(alertController, animated: true, completion: nil)
+	@IBAction func allValid(sender: UITextField) {
+		let message = "Everything fine!"
+		let guilties = swiftCop.allGuilties().map{ return $0.sentence}.joinWithSeparator("\n")
+		
+		self.validationLabel.text = guilties.characters.count > 0 ? guilties : message
 	}
 }
 

@@ -10,8 +10,8 @@ import UIKit
 
 public struct Suspect {
 	private(set) public var view: UITextField
-	var trial: (evidence: String) -> Bool
-	var sentence: String
+	private var trial: (evidence: String) -> Bool
+	private(set) public var sentence: String
 	
 	public init(view: UITextField, sentence: String, trial: (evidence: String) -> Bool) {
 		self.view = view
@@ -27,5 +27,9 @@ public struct Suspect {
 	
 	public func isGuilty() -> Bool {
 		return !self.trial(evidence: self.view.text!)
+	}
+	
+	public func verdict() -> String {
+		return self.isGuilty() ? self.sentence : ""
 	}
 }

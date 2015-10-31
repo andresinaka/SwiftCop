@@ -11,12 +11,17 @@ import XCTest
 
 class SwiftCopTests: XCTestCase {
 	var nameTextField: UITextField!
+	var emailTextField: UITextField!
+
 
     override func setUp() {
         super.setUp()
 
 		self.nameTextField = UITextField()
 		self.nameTextField.text = "Not Used"
+		
+		self.emailTextField = UITextField()
+		self.emailTextField.text = "Not Used"
     }
 
     override func tearDown() {
@@ -65,7 +70,7 @@ class SwiftCopTests: XCTestCase {
 		
 		if let suspect = swiftCop.isGuilty(textFieldGuilty) {
 			XCTAssertEqual(suspect.view, textFieldGuilty)
-			XCTAssertEqual(suspect.sentence, "False Trial")
+			XCTAssertEqual(suspect.verdict(), "False Trial")
 			expectation.fulfill()
 		}
 		
@@ -121,7 +126,7 @@ class SwiftCopTests: XCTestCase {
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)
 		XCTAssertEqual(guilties.first!.view, self.nameTextField)
-		XCTAssertEqual(guilties.first!.sentence, "Guilty")
+		XCTAssertEqual(guilties.first!.verdict(), "Guilty")
 	}
 
 	func testNoTextTextField() {

@@ -28,12 +28,12 @@ public class SwiftCop {
 		}
 	}
 	
-	public func isGuilty(textView: UITextField) -> Suspect? {
-		for suspect in suspects where suspect.view == textView {
+	public func isGuilty(textField: UITextField) -> Suspect? {
+		for suspect in suspects where suspect.view == textField {
 			if suspect.isGuilty() {
 				return suspect
 			}
 		}
 		return nil
-	}
+	}	
 }

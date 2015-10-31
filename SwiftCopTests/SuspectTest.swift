@@ -29,6 +29,7 @@ class SuspectTest: XCTestCase {
 	
 		let suspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: trial)
 		
+		XCTAssertEqual(suspect.verdict(), "")
 		XCTAssertEqual(suspect.sentence, "True Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertFalse(suspect.isGuilty())
@@ -43,27 +44,35 @@ class SuspectTest: XCTestCase {
 		
 		let suspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: trial)
 		
-		XCTAssertEqual(suspect.sentence, "False Trial")
+		XCTAssertEqual(suspect.verdict(), "False Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertTrue(suspect.isGuilty())
 	}
 
-	
-	func testCreateSuspectWithTrialTrue(){
+	func testVeredictReturn() {
+		let notGuiltySuspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.True)
+		let guiltySuspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: Trial.False)
 		
-
+		XCTAssertEqual(notGuiltySuspect.verdict(), "")
+		XCTAssertEqual(guiltySuspect.verdict(), "False Trial")
+	}
+	
+	func testCreateSuspectWithTrialTrue() {
 
 		let suspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.True)
 		
+		
+		XCTAssertEqual(suspect.verdict(), "")
 		XCTAssertEqual(suspect.sentence, "True Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertFalse(suspect.isGuilty())
 	}
 	
-	func testCreateSuspectWithTrialFalse(){
+	func testCreateSuspectWithTrialFalse() {
 		
 		let suspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: Trial.False)
 		
+		XCTAssertEqual(suspect.verdict(), "False Trial")
 		XCTAssertEqual(suspect.sentence, "False Trial")
 		XCTAssertEqual(suspect.view, self.dummyTextField)
 		XCTAssertTrue(suspect.isGuilty())
