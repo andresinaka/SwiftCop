@@ -4,6 +4,9 @@
 
 SwiftCop is a validation library fully written in Swift and inspired by the verbosity and clarity of [Ruby On Rails Active Record validations](http://guides.rubyonrails.org/active_record_validations.html).
 
+[![Build Status](https://travis-ci.org/andresinaka/SwiftCop.svg)](https://travis-ci.org/andresinaka/SwiftCop)
+[![Coverage Status](https://coveralls.io/repos/andresinaka/SwiftCop/badge.svg?branch=master&service=github)](https://coveralls.io/github/andresinaka/SwiftCop?branch=master)
+
 ### Objective
 
 Build a standard drop-in library for validations in Swift while making it easily extensible for users to create custom validations. And avoid developers from writting over and over again the same code and validations for different projects.
