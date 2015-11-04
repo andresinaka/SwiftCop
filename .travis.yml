@@ -3,7 +3,7 @@ language: objective-c
 
 before_install:
 - rvm use $RVM_RUBY_VERSION
-- brew update
+- brew update || brew update
 - brew outdated xctool || brew upgrade xctool
 
 install: 
