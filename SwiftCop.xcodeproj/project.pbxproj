@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0030DFF1BE99FDF00482649 /* Suspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030DFC1BE99FDF00482649 /* Suspect.swift */; };
+		E0030E001BE99FDF00482649 /* SwiftCop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030DFD1BE99FDF00482649 /* SwiftCop.swift */; };
+		E0030E011BE99FDF00482649 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0030DFE1BE99FDF00482649 /* Trial.swift */; };
 		E04EBB491BD1C67000517851 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB481BD1C67000517851 /* AppDelegate.swift */; };
 		E04EBB4B1BD1C67000517851 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB4A1BD1C67000517851 /* ViewController.swift */; };
 		E04EBB4E1BD1C67000517851 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04EBB4C1BD1C67000517851 /* Main.storyboard */; };
@@ -14,11 +17,8 @@
 		E04EBB531BD1C67000517851 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04EBB511BD1C67000517851 /* LaunchScreen.storyboard */; };
 		E04EBB5E1BD1C67000517851 /* SwiftCopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */; };
 		E04EBB691BD1C67100517851 /* SwiftCopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */; };
-		E04EBB781BD1C72500517851 /* SwiftCop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB771BD1C72500517851 /* SwiftCop.swift */; settings = {ASSET_TAGS = (); }; };
-		E05551551BD8526C0012CD93 /* TrialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05551541BD8526C0012CD93 /* TrialTests.swift */; settings = {ASSET_TAGS = (); }; };
-		E07E95C41BE03DE3000CA328 /* Trial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C31BE03DE3000CA328 /* Trial.swift */; settings = {ASSET_TAGS = (); }; };
-		E07E95C61BE03E1F000CA328 /* Suspect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C51BE03E1F000CA328 /* Suspect.swift */; settings = {ASSET_TAGS = (); }; };
-		E07E95C81BE03E6A000CA328 /* SuspectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C71BE03E6A000CA328 /* SuspectTest.swift */; settings = {ASSET_TAGS = (); }; };
+		E05551551BD8526C0012CD93 /* TrialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05551541BD8526C0012CD93 /* TrialTests.swift */; };
+		E07E95C81BE03E6A000CA328 /* SuspectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C71BE03E6A000CA328 /* SuspectTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0030DFC1BE99FDF00482649 /* Suspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Suspect.swift; path = SwiftCop/Suspect.swift; sourceTree = "<group>"; };
+		E0030DFD1BE99FDF00482649 /* SwiftCop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftCop.swift; path = SwiftCop/SwiftCop.swift; sourceTree = "<group>"; };
+		E0030DFE1BE99FDF00482649 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trial.swift; path = SwiftCop/Trial.swift; sourceTree = "<group>"; };
 		E04EBB451BD1C67000517851 /* SwiftCop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04EBB481BD1C67000517851 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E04EBB4A1BD1C67000517851 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,10 +55,7 @@
 		E04EBB641BD1C67100517851 /* SwiftCopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCopUITests.swift; sourceTree = "<group>"; };
 		E04EBB6A1BD1C67100517851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E04EBB771BD1C72500517851 /* SwiftCop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCop.swift; sourceTree = "<group>"; };
 		E05551541BD8526C0012CD93 /* TrialTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialTests.swift; sourceTree = "<group>"; };
-		E07E95C31BE03DE3000CA328 /* Trial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trial.swift; sourceTree = "<group>"; };
-		E07E95C51BE03E1F000CA328 /* Suspect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suspect.swift; sourceTree = "<group>"; };
 		E07E95C71BE03E6A000CA328 /* SuspectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspectTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,10 +84,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0030DFB1BE99FCB00482649 /* SwiftCop */ = {
+			isa = PBXGroup;
+			children = (
+				E0030DFC1BE99FDF00482649 /* Suspect.swift */,
+				E0030DFD1BE99FDF00482649 /* SwiftCop.swift */,
+				E0030DFE1BE99FDF00482649 /* Trial.swift */,
+			);
+			name = SwiftCop;
+			sourceTree = "<group>";
+		};
 		E04EBB3C1BD1C67000517851 = {
 			isa = PBXGroup;
 			children = (
-				E04EBB471BD1C67000517851 /* SwiftCop */,
+				E0030DFB1BE99FCB00482649 /* SwiftCop */,
+				E04EBB471BD1C67000517851 /* SwiftCopExample */,
 				E04EBB5C1BD1C67000517851 /* SwiftCopTests */,
 				E04EBB671BD1C67100517851 /* SwiftCopUITests */,
 				E04EBB461BD1C67000517851 /* Products */,
@@ -104,7 +115,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E04EBB471BD1C67000517851 /* SwiftCop */ = {
+		E04EBB471BD1C67000517851 /* SwiftCopExample */ = {
 			isa = PBXGroup;
 			children = (
 				E04EBB481BD1C67000517851 /* AppDelegate.swift */,
@@ -113,11 +124,8 @@
 				E04EBB4F1BD1C67000517851 /* Assets.xcassets */,
 				E04EBB511BD1C67000517851 /* LaunchScreen.storyboard */,
 				E04EBB541BD1C67000517851 /* Info.plist */,
-				E04EBB771BD1C72500517851 /* SwiftCop.swift */,
-				E07E95C31BE03DE3000CA328 /* Trial.swift */,
-				E07E95C51BE03E1F000CA328 /* Suspect.swift */,
 			);
-			path = SwiftCop;
+			path = SwiftCopExample;
 			sourceTree = "<group>";
 		};
 		E04EBB5C1BD1C67000517851 /* SwiftCopTests */ = {
@@ -270,11 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0030E011BE99FDF00482649 /* Trial.swift in Sources */,
+				E0030E001BE99FDF00482649 /* SwiftCop.swift in Sources */,
 				E04EBB4B1BD1C67000517851 /* ViewController.swift in Sources */,
+				E0030DFF1BE99FDF00482649 /* Suspect.swift in Sources */,
 				E04EBB491BD1C67000517851 /* AppDelegate.swift in Sources */,
-				E07E95C41BE03DE3000CA328 /* Trial.swift in Sources */,
-				E04EBB781BD1C72500517851 /* SwiftCop.swift in Sources */,
-				E07E95C61BE03E1F000CA328 /* Suspect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				INFOPLIST_FILE = SwiftCop/Info.plist;
+				INFOPLIST_FILE = SwiftCopExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ar.com.acanal.SwiftCop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,7 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
-				INFOPLIST_FILE = SwiftCop/Info.plist;
+				INFOPLIST_FILE = SwiftCopExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ar.com.acanal.SwiftCop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
