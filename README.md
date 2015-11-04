@@ -6,7 +6,7 @@ SwiftCop is a validation library fully written in Swift and inspired by the verb
 
 [![Build Status](https://travis-ci.org/andresinaka/SwiftCop.svg)](https://travis-ci.org/andresinaka/SwiftCop)
 
-[![codecov.io](https://codecov.io/github/andresinaka/SwiftCop/badge.svg?branch=master)](https://codecov.io/github/andresinaka/SwiftCop/badge.svg?branch=master)
+[![codecov.io](https://codecov.io/github/andresinaka/SwiftCop/badge.svg?branch=master)](https://codecov.io/github/andresinaka/SwiftCop?branch=master)
 
 ### Objective
 
