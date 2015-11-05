@@ -12,6 +12,8 @@ import UIKit
 public class SwiftCop {
 	var suspects = Array<Suspect>()
 	
+	public init(){}
+	
 	public func addSuspect(suspect: Suspect) {
 		suspects.append(suspect)
 	}
