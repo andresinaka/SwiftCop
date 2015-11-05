@@ -4,7 +4,7 @@
 
 SwiftCop is a validation library fully written in Swift and inspired by the verbosity and clarity of [Ruby On Rails Active Record validations](http://guides.rubyonrails.org/active_record_validations.html).
 
-[![Build Status](https://travis-ci.org/andresinaka/SwiftCop.svg)](https://travis-ci.org/andresinaka/SwiftCop) [![codecov.io](https://codecov.io/github/andresinaka/SwiftCop/badge.svg?branch=master)](https://codecov.io/github/andresinaka/SwiftCop?branch=master)
+[![Build Status](https://travis-ci.org/andresinaka/SwiftCop.svg)](https://travis-ci.org/andresinaka/SwiftCop) [![codecov.io](https://codecov.io/github/andresinaka/SwiftCop/badge.svg?branch=master)](https://codecov.io/github/andresinaka/SwiftCop?branch=master) [![codecov.io](https://img.shields.io/badge/pod-v0.0.1-brightgreen.svg)]()
 
 ### Objective
 
@@ -212,9 +212,21 @@ class ViewController: UIViewController {
 
 # Installation
 
+You can just clone the repo and copy the ```SwiftCop``` folder to your project or you can use one of the following options:
+
 ### Setting up with [CocoaPods](http://cocoapods.org/)
 
-- TODO
+```
+pod 'SwiftCop'
+```
+
+Then:
+
+``` 
+import SwiftCop
+```
+
+And you are all set! 
 
 ### Setting up with [Carthage](https://github.com/Carthage/Carthage)
 
