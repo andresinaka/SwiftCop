@@ -13,7 +13,7 @@ Build a standard drop-in library for validations in Swift while making it easily
 ## Features
 
 - Quick validations.
-- Super simple and verbose syntax.
+- Super simple and declarative syntax.
 - Easily extensible.
 - Fully Swift 2.0
 
