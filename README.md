@@ -2,7 +2,7 @@
 
 # SwiftCop
 
-SwiftCop is a validation library fully written in Swift and inspired by the verbosity and clarity of [Ruby On Rails Active Record validations](http://guides.rubyonrails.org/active_record_validations.html).
+SwiftCop is a validation library fully written in Swift and inspired by the clarity of [Ruby On Rails Active Record validations](http://guides.rubyonrails.org/active_record_validations.html).
 
 [![Build Status](https://travis-ci.org/andresinaka/SwiftCop.svg)](https://travis-ci.org/andresinaka/SwiftCop) [![codecov.io](https://codecov.io/github/andresinaka/SwiftCop/badge.svg?branch=master)](https://codecov.io/github/andresinaka/SwiftCop?branch=master) [![codecov.io](https://img.shields.io/badge/pod-v0.0.1-brightgreen.svg)]()
 
@@ -12,7 +12,7 @@ Build a standard drop-in library for validations in Swift while making it easily
 
 ## Features
 
-- Quickly validations.
+- Quick validation.
 - Super simple and verbose syntax.
 - Easily extensible.
 - Fully Swift 2.0
