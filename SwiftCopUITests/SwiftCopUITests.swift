@@ -49,19 +49,17 @@ class SwiftCopUITests: XCTestCase {
 	
 	func testAllValidationsPass(){
 		
-		let app = XCUIApplication()
-		let fullNameTextField = app.textFields["Full Name"]
+		let fullNameTextField = XCUIApplication().textFields["Full Name"]
 		fullNameTextField.tap()
 		fullNameTextField.typeText("fist name")
 		
-		let emailTextField = app.textFields["Email"]
+		let emailTextField = XCUIApplication().textFields["Email"]
 		emailTextField.tap()
 		emailTextField.typeText("email@email.com")
 		
-		let passwordTextField = app.textFields["Password"]
+		let passwordTextField = XCUIApplication().textFields["Password"]
 		passwordTextField.tap()
 		passwordTextField.typeText("password")
-		app.buttons["Check Validations"].tap()
 		
 		let policemanElement = XCUIApplication().otherElements.containingType(.Image, identifier:"policeman").element
 		policemanElement.tap()
