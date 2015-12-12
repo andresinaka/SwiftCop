@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 		swiftCop.addSuspect(Suspect(view: self.fullName, sentence: "More Than Two Words Needed"){
 			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
 		})
-		swiftCop.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.USAPhoneNumber))
+		swiftCop.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.Email))
 		swiftCop.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters", trial: Trial.Length(.Minimum, 4)))
 	}
 
