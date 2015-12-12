@@ -27,6 +27,7 @@ public enum Trial: TrialProtocol {
 	case Length(Lenght,Any)
 	case False
 	case True
+    case USAPhoneNumber
 	
 	public func trial() -> ((evidence: String) -> Bool){
 		switch self {
@@ -99,6 +100,11 @@ public enum Trial: TrialProtocol {
 			return { (evidence: String) -> Bool in
 				return false
 			}
+        case .USAPhoneNumber:
+            return { (evidence: String) -> Bool in
+                //TODO: Implement USphone number checking.
+                return false
+            }
 
 		default:
 			return { (evidence: String) -> Bool in
