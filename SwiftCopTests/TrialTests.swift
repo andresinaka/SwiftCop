@@ -97,6 +97,28 @@ class TrialTests: XCTestCase {
 		XCTAssertTrue(trial(evidence: "12"))
 		XCTAssertFalse(trial(evidence: "1"))
 	}
+    
+    func testUSAPhoneNumber() {
+        let usaPhoneNumberTial = Trial.USAPhoneNumber
+        let trial = usaPhoneNumberTial.trial()
+        
+        XCTAssertTrue(trial(evidence: "954-801-8333"))
+        XCTAssertTrue(trial(evidence: "(954)-801-8333"))
+        XCTAssertTrue(trial(evidence: "(954) 801-8333"))
+        XCTAssertTrue(trial(evidence: "(954) 8018333"))
+        XCTAssertTrue(trial(evidence: "9548018333"))
+        
+        XCTAssertFalse(trial(evidence: "(9548018333"))
+        XCTAssertFalse(trial(evidence: "(954)8018333"))
+        XCTAssertFalse(trial(evidence: "95480183"))
+        XCTAssertFalse(trial(evidence: "(35)-954-1345"))
+        XCTAssertFalse(trial(evidence: "(954)-34-1345"))
+        XCTAssertFalse(trial(evidence: "(954)-343-135"))
+        XCTAssertFalse(trial(evidence: "9548018333)"))
+
+
+
+    }
 	
 	func testInvalid() {
 		let interval = Trial.Length(.In, 5)
