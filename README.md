@@ -8,7 +8,7 @@ SwiftCop is a validation library fully written in Swift and inspired by the clar
 
 ### Objective
 
-Build a standard drop-in library for validations in Swift while making it easily extensible for users to create custom validations. And avoid developers from writting over and over again the same code and validations for different projects.
+Build a standard drop-in library for validations in Swift while making it easily extensible for users to create custom validations. And avoid developers from writing over and over again the same code and validations for different projects.
 
 ## Features
 
@@ -69,8 +69,8 @@ let trial = emailTrial.trial()
 XCTAssertTrue(trial(evidence: "test@test.com"))
 ```
 
-#### ```Length(Lenght,Any)```
-This validates the lenght of given evidence:
+#### ```Length(Length,Any)```
+This validates the length of given evidence:
 
 ```swift
 let lengthTrial = Trial.Length(.Is, 10)
@@ -115,7 +115,7 @@ func isGuilty() -> Bool
 
 This method is going to return ```true``` if the ```Trial``` returns ```false```.
 
-Also we can dirrectly ask for the ```verdict``` on the ```Suspect```, this is going to check if it's guilty or not and then return and empty string (```""```) or the ```sentence```.
+Also we can directly ask for the ```verdict``` on the ```Suspect```, this is going to check if it's guilty or not and then return and empty string (```""```) or the ```sentence```.
 
 For example: 
 
