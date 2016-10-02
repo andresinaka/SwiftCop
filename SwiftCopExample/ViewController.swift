@@ -25,32 +25,32 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		
 		swiftCop.addSuspect(Suspect(view: self.fullName, sentence: "More Than Two Words Needed"){
-			return $0.componentsSeparatedByString(" ").filter{$0 != ""}.count >= 2
+			return $0.components(separatedBy: " ").filter{$0 != ""}.count >= 2
 		})
-		swiftCop.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.Email))
-		swiftCop.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters", trial: Trial.Length(.Minimum, 4)))
+		swiftCop.addSuspect(Suspect(view:self.emailTextField, sentence: "Invalid email", trial: Trial.email))
+		swiftCop.addSuspect(Suspect(view:self.password, sentence: "Minimum 4 Characters", trial: Trial.length(.minimum, 4)))
 	}
 
-	@IBAction func validateFullName(sender: UITextField) {
+	@IBAction func validateFullName(_ sender: UITextField) {
 		self.fullNameMessage.text = swiftCop.isGuilty(sender)?.verdict()
 	}
 
-	@IBAction func validateEmail(sender: UITextField) {
+	@IBAction func validateEmail(_ sender: UITextField) {
 		self.emailMessage.text = swiftCop.isGuilty(sender)?.verdict()
 	}
 	
-	@IBAction func validatePassword(sender: UITextField) {
+	@IBAction func validatePassword(_ sender: UITextField) {
 		self.passwordMessage.text = swiftCop.isGuilty(sender)?.verdict()
 	}
 
-	@IBAction func allValid(sender: UITextField) {
+	@IBAction func allValid(_ sender: UITextField) {
 		let nonGultiesMessage = "Everything fine!"
-		let allGuiltiesMessage = swiftCop.allGuilties().map{ return $0.sentence}.joinWithSeparator("\n")
+		let allGuiltiesMessage = swiftCop.allGuilties().map{ return $0.sentence}.joined(separator: "\n")
 		
 		self.validationLabel.text = allGuiltiesMessage.characters.count > 0 ? allGuiltiesMessage : nonGultiesMessage
 	}
 	
-	@IBAction func hideKeyboard(sender: AnyObject) {
+	@IBAction func hideKeyboard(_ sender: AnyObject) {
 		self.view.endEditing(true)
 	}
 }

@@ -16,93 +16,92 @@ class TrialTests: XCTestCase {
     }
 
     func testExclusion() {
-		let exclusionTrial = Trial.Exclusion([".com",".ar", ".uy"])
+		let exclusionTrial = Trial.exclusion([".com",".ar", ".uy"])
 		let trial = exclusionTrial.trial()
-		
-		XCTAssertFalse(trial(evidence: "http://www.nytimes.com"))
-		XCTAssertFalse(trial(evidence: "http://www.lanacion.com.ar"))
-		XCTAssertTrue(trial(evidence: "http://www.elpais.es"))
+
+		XCTAssertFalse(trial("http://www.nytimes.com"))
+		XCTAssertFalse(trial("http://www.lanacion.com.ar"))
+		XCTAssertTrue(trial("http://www.elpais.es"))
 	}
 	
 	func testFormat() {
-		let formatTrial = Trial.Format("^#([a-f0-9]{6}|[a-f0-9]{3})$") // hexa number with #
+		let formatTrial = Trial.format("^#([a-f0-9]{6}|[a-f0-9]{3})$") // hexa number with #
 		let trial = formatTrial.trial()
 		
-		XCTAssertTrue(trial(evidence: "#57b5b5"))
-		XCTAssertFalse(trial(evidence: "57b5b5"))
-		XCTAssertFalse(trial(evidence: "#h7b5b5"))
+		XCTAssertTrue(trial("#57b5b5"))
+		XCTAssertFalse(trial("57b5b5"))
+		XCTAssertFalse(trial("#h7b5b5"))
 	}
 	
 	
 	func testInclusion() {
-		let inclusionTrial = Trial.Inclusion([".com",".ar", ".uy"])
+		let inclusionTrial = Trial.inclusion([".com",".ar", ".uy"])
 		let trial = inclusionTrial.trial()
 		
-		XCTAssertTrue(trial(evidence: "http://www.nytimes.com"))
-		XCTAssertTrue(trial(evidence: "http://www.lanacion.com.ar"))
-		XCTAssertFalse(trial(evidence: "http://www.elpais.es"))
+		XCTAssertTrue(trial("http://www.nytimes.com"))
+		XCTAssertTrue(trial("http://www.lanacion.com.ar"))
+		XCTAssertFalse(trial("http://www.elpais.es"))
 	}
 	
 	func testEmail() {
-		let emailTrial = Trial.Email
+		let emailTrial = Trial.email
 		let trial = emailTrial.trial()
 		
-		XCTAssertTrue(trial(evidence: "test@test.com"))
-		XCTAssertFalse(trial(evidence: "test@test"))
-		XCTAssertFalse(trial(evidence: "test@"))
-		XCTAssertFalse(trial(evidence: "test.com"))
-		XCTAssertFalse(trial(evidence: ".com"))
+		XCTAssertTrue(trial("test@test.com"))
+		XCTAssertFalse(trial("test@test"))
+		XCTAssertFalse(trial("test@"))
+		XCTAssertFalse(trial("test.com"))
+		XCTAssertFalse(trial(".com"))
 	}
 	
 	func testLengthIs() {
-		let lengthTrial = Trial.Length(.Is, 10)
+		let lengthTrial = Trial.length(.is, 10)
 		let trial = lengthTrial.trial()
 		
-		XCTAssertTrue(trial(evidence: "0123456789"))
-		XCTAssertFalse(trial(evidence: "56789"))
+		XCTAssertTrue(trial("0123456789"))
+		XCTAssertFalse(trial("56789"))
 	}
 	
 	func testLengthMinimum() {
-		let lengthTrial = Trial.Length(.Minimum, 10)
+		let lengthTrial = Trial.length(.minimum, 10)
 		let trial = lengthTrial.trial()
 		
-		XCTAssertTrue(trial(evidence: "0123456789"))
-		XCTAssertFalse(trial(evidence: "56789"))
+		XCTAssertTrue(trial("0123456789"))
+		XCTAssertFalse(trial("56789"))
 	}
 	
 	func testLengthMaximum() {
-		let lengthTrial = Trial.Length(.Maximum, 10)
+		let lengthTrial = Trial.length(.maximum, 10)
 		let trial = lengthTrial.trial()
 		
-		XCTAssertTrue(trial(evidence: "0123456789"))
-		XCTAssertFalse(trial(evidence: "01234567890"))
+		XCTAssertTrue(trial("0123456789"))
+		XCTAssertFalse(trial("01234567890"))
 	}
 	
 	func testLengthIntervalsHalfOpen() {
-		let interval = Trial.Length(.In, 2..<5 as HalfOpenInterval)
+		let interval = Trial.length(.in, 2..<5 as Range)
 		let trial = interval.trial()
 		
-		XCTAssertTrue(trial(evidence: "1234"))
-		XCTAssertFalse(trial(evidence: "12345"))
-		XCTAssertFalse(trial(evidence: "1"))
+		XCTAssertTrue(trial("1234"))
+		XCTAssertFalse(trial("12345"))
+		XCTAssertFalse(trial("1"))
 	}
 
 	func testLengthIntervalsClosed() {
-		let interval = Trial.Length(.In, 2...5 as ClosedInterval)
+		let interval = Trial.length(.in, 2...5 as ClosedRange)
 		let trial = interval.trial()
 
-		XCTAssertFalse(trial(evidence: "123456"))
-		XCTAssertTrue(trial(evidence: "12345"))
-		XCTAssertTrue(trial(evidence: "1234"))
-		XCTAssertTrue(trial(evidence: "12"))
-		XCTAssertFalse(trial(evidence: "1"))
+		XCTAssertFalse(trial("123456"))
+		XCTAssertTrue(trial("12345"))
+		XCTAssertTrue(trial("1234"))
+		XCTAssertTrue(trial("12"))
+		XCTAssertFalse(trial("1"))
 	}
-	
+
 	func testInvalid() {
-		let interval = Trial.Length(.In, 5)
+		let interval = Trial.length(.in, 5)
 		let trial = interval.trial()
 		
-		XCTAssertFalse(trial(evidence: "123456"))
+		XCTAssertFalse(trial("123456"))
 	}
-	
 }

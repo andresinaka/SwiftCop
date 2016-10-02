@@ -30,20 +30,20 @@ class SwiftCopTests: XCTestCase {
 	
 	func testAddSuspect() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "True Trial", trial: Trial.True))
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "False Trial", trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "True Trial", trial: Trial.beTrue))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "False Trial", trial: Trial.beFalse))
 		XCTAssertTrue(swiftCop.suspects.count == 2)
 	}
 	
 	func testAnyGuiltyFalse() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "True Trial", trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "True Trial", trial: Trial.beTrue))
 		XCTAssertFalse(swiftCop.anyGuilty())
 	}
 	
 	func testAnyGuiltyTrue() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "False Trial", trial: Trial.False))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "False Trial", trial: Trial.beFalse))
 		XCTAssertTrue(swiftCop.anyGuilty())
 	}
 	
@@ -56,9 +56,9 @@ class SwiftCopTests: XCTestCase {
 		let textFieldGuilty = UITextField()
 		textFieldGuilty.text = "Guilty"
 
-		swiftCop.addSuspect(Suspect(view: textFieldNotGuilty, sentence: "True Trial" , trial: Trial.True))
-		swiftCop.addSuspect(Suspect(view: textFieldGuilty, sentence: "True Trial" , trial: Trial.True))
-		swiftCop.addSuspect(Suspect(view: textFieldGuilty, sentence: "False Trial" , trial: Trial.False))
+		swiftCop.addSuspect(Suspect(view: textFieldNotGuilty, sentence: "True Trial" , trial: Trial.beTrue))
+		swiftCop.addSuspect(Suspect(view: textFieldGuilty, sentence: "True Trial" , trial: Trial.beTrue))
+		swiftCop.addSuspect(Suspect(view: textFieldGuilty, sentence: "False Trial" , trial: Trial.beFalse))
 
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)
@@ -66,7 +66,7 @@ class SwiftCopTests: XCTestCase {
 		XCTAssertNil(swiftCop.isGuilty(textFieldNotGuilty))
 		XCTAssertNotNil(swiftCop.isGuilty(textFieldGuilty))
 
-		let expectation = expectationWithDescription("isGuilty returns true")
+		let expectation = self.expectation(description: "isGuilty returns true")
 		
 		if let suspect = swiftCop.isGuilty(textFieldGuilty) {
 			XCTAssertEqual(suspect.view, textFieldGuilty)
@@ -74,7 +74,7 @@ class SwiftCopTests: XCTestCase {
 			expectation.fulfill()
 		}
 		
-		waitForExpectationsWithTimeout(1) { error in
+		waitForExpectations(timeout: 1) { error in
 			
 		}
 	}
@@ -111,8 +111,8 @@ class SwiftCopTests: XCTestCase {
 
 	func testCustomTrialAllGuiltiesFalse() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.True))
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.beTrue))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.beTrue))
 		
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 0)
@@ -120,8 +120,8 @@ class SwiftCopTests: XCTestCase {
 
 	func testCustomTrialAllGuiltiesTrue() {
 		let swiftCop = SwiftCop()
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Guilty", trial: Trial.False))
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.True))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Guilty", trial: Trial.beFalse))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Not Guilty", trial: Trial.beTrue))
 		
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)
@@ -132,7 +132,7 @@ class SwiftCopTests: XCTestCase {
 	func testNoTextTextField() {
 		let swiftCop = SwiftCop()
 		self.nameTextField.text = nil
-		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Guilty" , trial: Trial.False))
+		swiftCop.addSuspect(Suspect(view: self.nameTextField, sentence: "Guilty" , trial: Trial.beFalse))
 		
 		let guilties = swiftCop.allGuilties()
 		XCTAssertTrue(guilties.count == 1)

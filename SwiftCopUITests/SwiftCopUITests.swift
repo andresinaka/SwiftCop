@@ -61,7 +61,7 @@ class SwiftCopUITests: XCTestCase {
 		passwordTextField.tap()
 		passwordTextField.typeText("password")
 		
-		let policemanElement = XCUIApplication().otherElements.containingType(.Image, identifier:"policeman").element
+		let policemanElement = XCUIApplication().otherElements.containing(.image, identifier:"policeman").element
 		policemanElement.tap()
 		
 		let checkValidationsButton = XCUIApplication().buttons["Check Validations"]

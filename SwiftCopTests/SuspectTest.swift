@@ -22,7 +22,7 @@ class SuspectTest: XCTestCase {
 	
     func testCreateSuspectWithBlockTrue() {
 		
-		let trial: (evidence: String) -> Bool = {
+		let trial: (_ evidence: String) -> Bool = {
 			(evidence: String) -> Bool in
 			return true
 		}
@@ -37,7 +37,7 @@ class SuspectTest: XCTestCase {
 
 	func testCreateSuspectWithBlockFalse() {
 		
-		let trial: (evidence: String) -> Bool = {
+		let trial: (_ evidence: String) -> Bool = {
 			(evidence: String) -> Bool in
 			return false
 		}
@@ -50,8 +50,8 @@ class SuspectTest: XCTestCase {
 	}
 
 	func testVeredictReturn() {
-		let notGuiltySuspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.True)
-		let guiltySuspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: Trial.False)
+		let notGuiltySuspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.beTrue)
+		let guiltySuspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: Trial.beFalse)
 		
 		XCTAssertEqual(notGuiltySuspect.verdict(), "")
 		XCTAssertEqual(guiltySuspect.verdict(), "False Trial")
@@ -59,7 +59,7 @@ class SuspectTest: XCTestCase {
 	
 	func testCreateSuspectWithTrialTrue() {
 
-		let suspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.True)
+		let suspect = Suspect(view: self.dummyTextField, sentence: "True Trial", trial: Trial.beTrue)
 		
 		
 		XCTAssertEqual(suspect.verdict(), "")
@@ -70,7 +70,7 @@ class SuspectTest: XCTestCase {
 	
 	func testCreateSuspectWithTrialFalse() {
 		
-		let suspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: Trial.False)
+		let suspect = Suspect(view: self.dummyTextField, sentence: "False Trial", trial: Trial.beFalse)
 		
 		XCTAssertEqual(suspect.verdict(), "False Trial")
 		XCTAssertEqual(suspect.sentence, "False Trial")

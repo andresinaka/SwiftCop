@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SwiftCop"
-  s.version      = "0.0.1"
+  s.version      = "1.0.0"
   s.summary      = "SwiftCop is a validation library fully written in Swift and inspired by the verbosity and clarity of Ruby On Rails Active Record validations"
   s.description  = <<-DESC
                    Build a standard drop-in library for validations in Swift while making it easily extensible for users to create custom validations. And avoid developers from writting over and over again the same code and validations for different projects.
