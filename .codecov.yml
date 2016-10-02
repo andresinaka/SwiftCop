@@ -1,0 +1,5 @@
+coverage:
+  ignore:
+  - SwiftCopExample/*
+  - SwiftCopTests/*
+  - SwiftCopUITests/*
