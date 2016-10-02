@@ -9,93 +9,93 @@
 import UIKit
 
 public protocol TrialProtocol {
-	func trial() -> ((evidence: String) -> Bool)
+	func trial() -> ((_ evidence: String) -> Bool)
 }
 
 public enum Lenght {
-	case Is
-	case Maximum
-	case Minimum
-	case In
+	case `is`
+	case maximum
+	case minimum
+	case `in`
 }
 
 public enum Trial: TrialProtocol {
-	case Exclusion([String])
-	case Format(String)
-	case Inclusion([String])
-	case Email
-	case Length(Lenght,Any)
-	case False
-	case True
+	case exclusion([String])
+	case format(String)
+	case inclusion([String])
+	case email
+	case length(Lenght,Any)
+	case beTrue
+	case beFalse
 	
-	public func trial() -> ((evidence: String) -> Bool){
+	public func trial() -> ((_ evidence: String) -> Bool){
 		switch self {
-		case let .Exclusion(exclusionElements):
+		case let .exclusion(exclusionElements):
 			return { (evidence: String) -> Bool in
 				
 				for exclusionElement in exclusionElements {
-					if ((evidence.rangeOfString(exclusionElement)) != nil) {
+					if ((evidence.range(of: exclusionElement)) != nil) {
 						return false
 					}
 				}
 				return true
 			}
 			
-		case let .Format(regex):
+		case let .format(regex):
 			return { (evidence: String) -> Bool in
 				let regexTest = NSPredicate(format:"SELF MATCHES %@", regex)
-				return regexTest.evaluateWithObject(evidence)
+				return regexTest.evaluate(with: evidence)
 			}
 			
-		case let .Inclusion(inclusionElements):
+		case let .inclusion(inclusionElements):
 			return { (evidence: String) -> Bool in
 				
 				for inclusionElement in inclusionElements {
-					if ((evidence.rangeOfString(inclusionElement)) != nil) {
+					if ((evidence.range(of: inclusionElement)) != nil) {
 						return true
 					}
 				}
 				return false
 			}
 			
-		case .Email:
+		case .email:
 			return { (evidence: String) -> Bool in
 				let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 				let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-				return emailTest.evaluateWithObject(evidence)
+				return emailTest.evaluate(with: evidence)
 			}
 			
-		case .Length(Lenght.Is, let exact as Int):
+		case .length(Lenght.is, let exact as Int):
 			return { (evidence: String) -> Bool in
 				return evidence.characters.count == exact
 			}
 			
-		case .Length(Lenght.Minimum, let minimum as Int):
+		case .length(Lenght.minimum, let minimum as Int):
 			return { (evidence: String) -> Bool in
 				return evidence.characters.count >= minimum
 			}
 			
-		case .Length(Lenght.Maximum , let maximum as Int):
+		case .length(Lenght.maximum , let maximum as Int):
 			return { (evidence: String) -> Bool in
 				return evidence.characters.count <= maximum
 			}
 			
-		case .Length(Lenght.In , let interval as HalfOpenInterval<Int>):
+		case .length(Lenght.in , let interval as Range<Int>):
 			return { (evidence: String) -> Bool in
 				return interval.contains(evidence.characters.count)
 			}
 			
-		case .Length(Lenght.In , let interval as ClosedInterval<Int>):
+		case .length(Lenght.in , let interval as ClosedRange<Int>):
 			return { (evidence: String) -> Bool in
 				return interval.contains(evidence.characters.count)
 			}
 			
-		case .True:
+		case .beTrue:
 			return { (evidence: String) -> Bool in
 				return true
 			}
 
-		case .False:
+		case .beFalse:
 			return { (evidence: String) -> Bool in
 				return false
 			}

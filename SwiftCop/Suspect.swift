@@ -9,11 +9,11 @@
 import UIKit
 
 public struct Suspect {
-	private(set) public var view: UITextField
-	private var trial: (evidence: String) -> Bool
-	private(set) public var sentence: String
+	fileprivate(set) public var view: UITextField
+	fileprivate var trial: (_ evidence: String) -> Bool
+	fileprivate(set) public var sentence: String
 	
-	public init(view: UITextField, sentence: String, trial: (evidence: String) -> Bool) {
+	public init(view: UITextField, sentence: String, trial: @escaping (_ evidence: String) -> Bool) {
 		self.view = view
 		self.trial = trial
 		self.sentence = sentence
@@ -26,7 +26,7 @@ public struct Suspect {
 	}
 	
 	public func isGuilty() -> Bool {
-		return !self.trial(evidence: self.view.text!)
+		return !self.trial(self.view.text!)
 	}
 	
 	public func verdict() -> String {

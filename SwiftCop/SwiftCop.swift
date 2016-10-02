@@ -9,28 +9,28 @@
 import Foundation
 import UIKit
 
-public class SwiftCop {
+open class SwiftCop {
 	var suspects = Array<Suspect>()
 	
 	public init(){}
 	
-	public func addSuspect(suspect: Suspect) {
+	open func addSuspect(_ suspect: Suspect) {
 		suspects.append(suspect)
 	}
 	
-	public func anyGuilty() -> Bool {
+	open func anyGuilty() -> Bool {
 		return suspects.filter{
 			return $0.isGuilty()
 		}.count != 0
 	}
 	
-	public func allGuilties() -> Array<Suspect> {
+	open func allGuilties() -> Array<Suspect> {
 		return suspects.filter{
 			return $0.isGuilty()
 		}
 	}
 	
-	public func isGuilty(textField: UITextField) -> Suspect? {
+	open func isGuilty(_ textField: UITextField) -> Suspect? {
 		for suspect in suspects where suspect.view == textField {
 			if suspect.isGuilty() {
 				return suspect
