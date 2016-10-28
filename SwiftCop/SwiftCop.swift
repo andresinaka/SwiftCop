@@ -15,7 +15,9 @@ open class SwiftCop {
 	public init(){}
 	
 	open func addSuspect(_ suspect: Suspect) {
-		suspects.append(suspect)
+        if suspect.view.isSupportSuspectable {
+    		suspects.append(suspect)
+        }
 	}
 	
 	open func anyGuilty() -> Bool {
@@ -30,8 +32,8 @@ open class SwiftCop {
 		}
 	}
 	
-	open func isGuilty(_ textField: UITextField) -> Suspect? {
-		for suspect in suspects where suspect.view == textField {
+	open func isGuilty(_ view: UIView) -> Suspect? {
+		for suspect in suspects where suspect.view == view {
 			if suspect.isGuilty() {
 				return suspect
 			}
