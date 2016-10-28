@@ -19,6 +19,8 @@
 		E04EBB691BD1C67100517851 /* SwiftCopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04EBB681BD1C67100517851 /* SwiftCopUITests.swift */; };
 		E05551551BD8526C0012CD93 /* TrialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05551541BD8526C0012CD93 /* TrialTests.swift */; };
 		E07E95C81BE03E6A000CA328 /* SuspectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07E95C71BE03E6A000CA328 /* SuspectTest.swift */; };
+		F4FE13811DC333B70044D938 /* Suspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE13801DC333B70044D938 /* Suspectable.swift */; };
+		F4FE13841DC336BD0044D938 /* SwiftCopTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE13831DC336BD0044D938 /* SwiftCopTextViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		E04EBB6A1BD1C67100517851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E05551541BD8526C0012CD93 /* TrialTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrialTests.swift; sourceTree = "<group>"; };
 		E07E95C71BE03E6A000CA328 /* SuspectTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspectTest.swift; sourceTree = "<group>"; };
+		F4FE13801DC333B70044D938 /* Suspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Suspectable.swift; path = SwiftCop/Suspectable.swift; sourceTree = "<group>"; };
+		F4FE13831DC336BD0044D938 /* SwiftCopTextViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftCopTextViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 				E0030DFC1BE99FDF00482649 /* Suspect.swift */,
 				E0030DFD1BE99FDF00482649 /* SwiftCop.swift */,
 				E0030DFE1BE99FDF00482649 /* Trial.swift */,
+				F4FE13801DC333B70044D938 /* Suspectable.swift */,
 			);
 			name = SwiftCop;
 			sourceTree = "<group>";
@@ -131,10 +136,11 @@
 		E04EBB5C1BD1C67000517851 /* SwiftCopTests */ = {
 			isa = PBXGroup;
 			children = (
-				E05551541BD8526C0012CD93 /* TrialTests.swift */,
-				E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */,
-				E07E95C71BE03E6A000CA328 /* SuspectTest.swift */,
 				E04EBB5F1BD1C67100517851 /* Info.plist */,
+				E07E95C71BE03E6A000CA328 /* SuspectTest.swift */,
+				E04EBB5D1BD1C67000517851 /* SwiftCopTests.swift */,
+				F4FE13831DC336BD0044D938 /* SwiftCopTextViewTests.swift */,
+				E05551541BD8526C0012CD93 /* TrialTests.swift */,
 			);
 			path = SwiftCopTests;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				E04EBB4B1BD1C67000517851 /* ViewController.swift in Sources */,
 				E0030DFF1BE99FDF00482649 /* Suspect.swift in Sources */,
 				E04EBB491BD1C67000517851 /* AppDelegate.swift in Sources */,
+				F4FE13811DC333B70044D938 /* Suspectable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4FE13841DC336BD0044D938 /* SwiftCopTextViewTests.swift in Sources */,
 				E04EBB5E1BD1C67000517851 /* SwiftCopTests.swift in Sources */,
 				E05551551BD8526C0012CD93 /* TrialTests.swift in Sources */,
 				E07E95C81BE03E6A000CA328 /* SuspectTest.swift in Sources */,
