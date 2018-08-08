@@ -67,27 +67,27 @@ public enum Trial: TrialProtocol {
 			
 		case .length(Lenght.is, let exact as Int):
 			return { (evidence: String) -> Bool in
-				return evidence.characters.count == exact
+				return evidence.count == exact
 			}
 			
 		case .length(Lenght.minimum, let minimum as Int):
 			return { (evidence: String) -> Bool in
-				return evidence.characters.count >= minimum
+				return evidence.count >= minimum
 			}
 			
 		case .length(Lenght.maximum , let maximum as Int):
 			return { (evidence: String) -> Bool in
-				return evidence.characters.count <= maximum
+				return evidence.count <= maximum
 			}
 			
 		case .length(Lenght.in , let interval as Range<Int>):
 			return { (evidence: String) -> Bool in
-				return interval.contains(evidence.characters.count)
+				return interval.contains(evidence.count)
 			}
 			
 		case .length(Lenght.in , let interval as ClosedRange<Int>):
 			return { (evidence: String) -> Bool in
-				return interval.contains(evidence.characters.count)
+				return interval.contains(evidence.count)
 			}
 			
 		case .beTrue:
