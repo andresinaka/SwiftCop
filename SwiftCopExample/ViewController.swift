@@ -47,7 +47,7 @@ class ViewController: UIViewController {
 		let nonGultiesMessage = "Everything fine!"
 		let allGuiltiesMessage = swiftCop.allGuilties().map{ return $0.sentence}.joined(separator: "\n")
 		
-		self.validationLabel.text = allGuiltiesMessage.characters.count > 0 ? allGuiltiesMessage : nonGultiesMessage
+		self.validationLabel.text = allGuiltiesMessage.count > 0 ? allGuiltiesMessage : nonGultiesMessage
 	}
 	
 	@IBAction func hideKeyboard(_ sender: AnyObject) {
