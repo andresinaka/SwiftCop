@@ -49,7 +49,7 @@ This validates whether the evidence matches a given regular expression.
 ```swift
 let formatTrial = Trial.format("^#([a-f0-9]{6}|[a-f0-9]{3})$") // hexa number with #
 let trial = formatTrial.trial()
-	
+
 XCTAssertTrue(trial("#57b5b5"))
 XCTAssertFalse(trial("57b5b5"))
 XCTAssertFalse(trial("#h7b5b5"))
@@ -61,7 +61,7 @@ This validates that the attributes are included in the evidence string.
 ```swift
 let inclusionTrial = Trial.inclusion([".com",".ar", ".uy"])
 let trial = inclusionTrial.trial()
-	
+
 XCTAssertTrue(trial("http://www.nytimes.com"))
 XCTAssertTrue(trial("http://www.lanacion.com.ar"))
 XCTAssertFalse(trial("http://www.elpais.es"))
@@ -124,7 +124,7 @@ This method is going to return ```true``` if the ```Trial``` returns ```false```
 
 Also we can directly ask for the ```verdict``` on the ```Suspect```, this is going to check if it's guilty or not and then return and empty string (```""```) or the ```sentence```.
 
-For example: 
+For example:
 
 ```swift
 let suspect = Suspect(view: self.dummyTextField, sentence: "Invalid email", trial: .Email)		
@@ -141,7 +141,7 @@ As you can imagine this is going to add a suspect under the vigilance of a cop, 
 open func addSuspect(_ suspect: Suspect)
 ```
 
-This let us check if there is any guilty suspect between all the suspects under the surveillance of our cop:
+This will let us check if there is any guilty suspect between all the suspects under the surveillance of our cop:
 
 ```swift
 public func anyGuilty() -> Bool
@@ -153,7 +153,7 @@ This will let us know all the guilty suspects our cop found:
 public func allGuilties() -> Array<Suspect>
 ```
 
-This let us check if a UITextField that is suspect is guilty or not:
+This will let us check if a UITextField that is suspect is guilty or not:
 
 ```swift
 public func isGuilty(textField: UITextField) -> Suspect?
@@ -166,7 +166,7 @@ The example is shipped in the repository:
 ```Swift
 class ViewController: UIViewController {
 	@IBOutlet weak var validationLabel: UILabel!
-	
+
 	@IBOutlet weak var fullNameMessage: UILabel!
 	@IBOutlet weak var emailMessage: UILabel!
 	@IBOutlet weak var passwordMessage: UILabel!
@@ -174,12 +174,12 @@ class ViewController: UIViewController {
 	@IBOutlet weak var fullName: UITextField!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var password: UITextField!
-	
+
 	let swiftCop = SwiftCop()
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		swiftCop.addSuspect(Suspect(view: self.fullName, sentence: "More Than Two Words Needed"){
 			return $0.components(separatedBy: " ").filter{$0 != ""}.count >= 2
 		})
@@ -194,7 +194,7 @@ class ViewController: UIViewController {
 	@IBAction func validateEmail(_ sender: UITextField) {
 		self.emailMessage.text = swiftCop.isGuilty(sender)?.verdict()
 	}
-	
+
 	@IBAction func validatePassword(_ sender: UITextField) {
 		self.passwordMessage.text = swiftCop.isGuilty(sender)?.verdict()
 	}
@@ -202,10 +202,10 @@ class ViewController: UIViewController {
 	@IBAction func allValid(_ sender: UITextField) {
 		let nonGultiesMessage = "Everything fine!"
 		let allGuiltiesMessage = swiftCop.allGuilties().map{ return $0.sentence}.joined(separator: "\n")
-		
+
 		self.validationLabel.text = allGuiltiesMessage.characters.count > 0 ? allGuiltiesMessage : nonGultiesMessage
 	}
-	
+
 	@IBAction func hideKeyboard(_ sender: AnyObject) {
 		self.view.endEditing(true)
 	}
@@ -226,11 +226,11 @@ pod 'SwiftCop'
 
 Then:
 
-``` 
+```
 import SwiftCop
 ```
 
-And you are all set! 
+And you are all set!
 
 ### Setting up with [Carthage](https://github.com/Carthage/Carthage)
 
